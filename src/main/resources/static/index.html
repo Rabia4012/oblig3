@@ -1,48 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <script src="film.js"></script>
 
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <title>Bestilling</title>
 </head>
 
 <body>
 
-<h1>Bestilling av kinobiletter</h1>
-<form id="billettSkjema">
-    <label for="film">Velg film: </label>
-    <select id = "film" placeholder = "Velg film her">
-        <option>Velg film</option>
-        <option>Cinderella</option>
-        <option>Tangled</option>
-        <option>Beauty and the beast</option>
-    </select> <br> <br>
 
-
-    <label for = "antall">Antall: </label>
-    <input type="number" id="antall" maxlength="4" pattern="[0-9]" min="1" required autocomplete="off"/> <br> <br>
-
-    <label for="fornavn">Fornavn: </label>
-    <input type="text" id="fornavn"  placeholder="Skriv inn fornavn" maxlength="20" required autocomplete="off" /> <br/>
-
-    <label for="etternavn">Etternavn: </label>
-    <input type="text" id="etternavn"  placeholder="Skriv inn etternavn" maxlength="20" required autocomplete="off"/> <br/>
-
-    <label for="nummer">Telefonnr: </label>
-    <input type="text" id="nummer"  placeholder="Skriv inn telefonnr" maxlength="20" required autocomplete="off"/> <br/>
-
-    <label for="epost">Epost: </label>
-    <input type="text" id="epost"  placeholder="Skriv inn epost" maxlength="50" required autocomplete="off"/> <br/><br>
-
-    <button onclick="leggTilBillett()">Kjøp billett</button> <br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Bestilling av kinobiletter</h1>
+            <form class="form">
+                <div class="form-group">
+                    <label for="film">Film</label>
+                    <select id = "film" placeholder = "Velg film her">
+                        <option>Velg film</option>
+                        <option>Cinderella</option>
+                        <option>Tangled</option>
+                        <option>Beauty and the beast</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for = "antall">Antall: </label>
+                    <input type="number" class="form-control" id="antall" maxlength="4" pattern="[0-9]" min="1" required/>
+                </div>
+                <div>
+                    <label for="fornavn">Fornavn: </label>
+                    <input type="text" class="form-control" id="fornavn"  placeholder="Skriv inn fornavn" maxlength="20" required />
+                </div>
+                <div>
+                    <label for="etternavn">Etternavn: </label>
+                    <input type="text" class="form-control" id="etternavn"  placeholder="Skriv inn etternavn" maxlength="20" required/>
+                </div>
+                <div>
+                    <label for="nummer">Telefonnr: </label>
+                    <input type="text" class="form-control" id="nummer"  placeholder="Skriv inn telefonnr" maxlength="20" required/>
+                </div>
+                <div>
+                    <label for="epost">Epost: </label>
+                    <input type="text" class="form-control" id="epost"  placeholder="Skriv inn epost" maxlength="50" required/>
+                </div>
+            </form>
+            <button class="btn btn-primary" onclick="leggTilBillett()">Kjøp billett</button><br/>
+        </div>
+        <div class="col-md-8">
+            <h2> Alle biletter</h2>
+            <div id = "billettListe"> </div>
+            <button class="btn btn-danger" onclick="slettAlle()">Slett alle billetter</button>
+        </div>
+    </div>
+</div>
 </form>
-
-<h2> Alle biletter</h2>
-<ul id = "billettListe"> </ul>
-
-<button onclick="slettAlle()">Slett alle billetter</button>
-
 </body>
 </html>
