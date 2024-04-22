@@ -15,6 +15,15 @@ function leggTilBillett() {
         nummer: $("#nummer").val(),
         epost: $("#epost").val()
     };
+    if (!nummerRegex.test(billett.nummer)) {
+        alert("Du må taste inn et gyldig telefonnummer på 8 siffer.");
+        return;
+    }
+    if (!postRegex.test(billett.epost)) {
+        alert("Du må skrive inn en gyldig epost.");
+        return;
+    }
+
     $.post("/lagre", billett, function () {
         hentAlle()
     });
@@ -40,15 +49,6 @@ function formaterData(billetter){
         ut += "</table>";
         $("#billettListe").html(ut);
     }
-    /*if (!nummerRegex.test(nummer)) {
-        alert("Du må taste inn et gyldig telefonnummer på 8 siffer.");
-        return;
-    }
-
-    if (!postRegex.test(post)) {
-        alert("Du må skrive inn en gyldig epost.");
-        return;
-    }*/
 }
 function slettAlle(){
     $.get("/slettAlle",function (){
