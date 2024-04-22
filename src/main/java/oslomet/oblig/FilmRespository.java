@@ -13,8 +13,8 @@ public class FilmRespository {
     private JdbcTemplate db;
 
     public void lagreFilm(Film innFilm){
-        String sql="INSERT INTO film(antall, film, fornavn, etternavn, nummer, epost) VALUES(?,?)";
-        db.update(sql,innFilm.getAntall(),innFilm.getFilm(),innFilm.getFornavn(),
+        String sql="INSERT INTO Film(film, antall, fornavn, etternavn, nummer, epost) VALUES(?,?,?,?,?,?)";
+        db.update(sql,innFilm.getFilm(),innFilm.getAntall(),innFilm.getFornavn(),
                 innFilm.getEtternavn(),innFilm.getNummer(),innFilm.getEpost());
     }
     public List <Film> hentAlleFilmer(){

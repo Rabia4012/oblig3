@@ -1,5 +1,4 @@
-CREATE TABLE Film
-(
+CREATE TABLE Film (
     id INTEGER AUTO_INCREMENT NOT NULL,
     antall VARCHAR(225) NOT NULL,
     film VARCHAR(225) NOT NULL,
@@ -8,4 +7,4 @@ CREATE TABLE Film
     nummer VARCHAR(225) NOT NULL,
     epost VARCHAR(225) NOT NULL,
     primary key (id)
-)
+);
