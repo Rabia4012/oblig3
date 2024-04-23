@@ -1,4 +1,5 @@
 package oslomet.oblig;
+//POJO
 public class Film {
     private int antall;
     private String film;

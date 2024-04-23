@@ -6,7 +6,8 @@ let postRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 //Lager funksjonen LeggTilBillett.
 function leggTilBillett() {
-    //Samler alle verdiene fra input-boksene
+
+    //Lager billett objektet
     const billett = {
         antall: $("#antall").val(),
         film: $("#film").val(),
@@ -15,19 +16,23 @@ function leggTilBillett() {
         nummer: $("#nummer").val(),
         epost: $("#epost").val()
     };
+    //Regex validering for telefonnummer
     if (!nummerRegex.test(billett.nummer)) {
         alert("Du må taste inn et gyldig telefonnummer på 8 siffer.");
         return;
     }
+    //Regex validering for epost adresse
     if (!postRegex.test(billett.epost)) {
         alert("Du må skrive inn en gyldig epost.");
         return;
     }
 
+    //Kaller post-kallet som skal lagre billetten
     $.post("/lagre", billett, function () {
         hentAlle()
     });
 
+    //Tømmer input-felt
     antall:$("#antall").val("");
     film:$("#film").val("");
     fornavn:$("#fornavn").val("");
@@ -35,24 +40,32 @@ function leggTilBillett() {
     nummer:$("#nummer").val("");
     epost:$("#epost").val("");
 }
+
+
 function hentAlle() {
+    //Kaller hentAlle-kallet som skal hente billettene
     $.get("/hentAlle", function (billetter) {
         formaterData(billetter);
     });
 }
+//Lager tabell for å få skrevet ut billettene.
 function formaterData(billetter){
     let ut = "<table><tr><th>Antall</th><th>Film</th><th>Fornavn</th>" +
         "<th>Etternavn</th><th>Nummer</th><th>Epost</th></tr>";
+    //Skriver ut billettene med en for løkke.
     for (const billett of billetter) {
         ut += "<tr><td>" + billett.antall + "</td><td>" + billett.film + "</td><td>" + billett.fornavn + "</td>" +
             "<td>" + billett.etternavn + "</td><td>" + billett.nummer + "</td><td>" + billett.epost + "</td></tr>";
         ut += "</table>";
+        //Skriver ut løkken til billettlisten
         $("#billettListe").html(ut);
     }
 }
+//Kaller get-kallet for sletting av alle billetter
 function slettAlle(){
     $.get("/slettAlle",function (){
         hentAlle();
     });
+    //Tømmer listen ved å sette html-verdien til ingenting
     $("#billettListe").html("");
 }
