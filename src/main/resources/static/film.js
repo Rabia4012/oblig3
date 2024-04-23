@@ -56,10 +56,10 @@ function formaterData(billetter){
     for (const billett of billetter) {
         ut += "<tr><td>" + billett.antall + "</td><td>" + billett.film + "</td><td>" + billett.fornavn + "</td>" +
             "<td>" + billett.etternavn + "</td><td>" + billett.nummer + "</td><td>" + billett.epost + "</td></tr>";
-        ut += "</table>";
-        //Skriver ut løkken til billettlisten
-        $("#billettListe").html(ut);
     }
+    ut += "</table>";
+    //Skriver ut løkken til billettlisten
+    $("#billettListe").html(ut);
 }
 //Kaller get-kallet for sletting av alle billetter
 function slettAlle(){
