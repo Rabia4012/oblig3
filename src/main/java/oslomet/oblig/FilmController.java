@@ -11,23 +11,23 @@ import java.util.List;
 public class FilmController {
 
     @Autowired
-    private FilmRespository rep;
-    public final List <Film> alleFilmer = new ArrayList<>();
+    private FilmRespository repo;
+
 
     //Post-kall for å lagre billetter
     @PostMapping("/lagre")
     public void lagreFilm(Film innFilm){
-        rep.lagreFilm(innFilm);
+        repo.lagreFilm(innFilm);
     }
 
     //Get-kall for å hente billetttene
     @GetMapping("/hentAlle")
     public List <Film> hentAlle(){
-        return rep.hentAlleFilmer();
+        return repo.hentAlleFilmer();
     }
     //Get kall for å slette alle billetter
     @GetMapping("/slettAlle")
     public void slettAlle(){
-        rep.slettAlleFilmer();
+        repo.slettAlleFilmer();
     }
 }

@@ -1,5 +1,5 @@
 //Regex validering for telefonnummer.
-let nummerRegex =/^\d{8}$/;
+let nummerRegex =/^[0-9]{8}$/;
 
 //Regex validering for e-post adresse.
 let postRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -48,19 +48,31 @@ function hentAlle() {
         formaterData(billetter);
     });
 }
+
+
 //Lager tabell for å få skrevet ut billettene.
 function formaterData(billetter){
-    let ut = "<table><tr><th>Antall</th><th>Film</th><th>Fornavn</th>" +
-        "<th>Etternavn</th><th>Nummer</th><th>Epost</th></tr>";
+    let ut = "<table class='table table-striped'>"+
+        "<tr>" +
+        "<td>Antall</td><td>Film</td><td>Fornavn</td><td>Etternavn</td><td>Nummer</td><td>Epost</td>"+
+        "</tr>";
     //Skriver ut billettene med en for løkke.
     for (const billett of billetter) {
-        ut += "<tr><td>" + billett.antall + "</td><td>" + billett.film + "</td><td>" + billett.fornavn + "</td>" +
-            "<td>" + billett.etternavn + "</td><td>" + billett.nummer + "</td><td>" + billett.epost + "</td></tr>";
+        ut += "<tr>" +
+            "<td>" + billett.antall +
+            "</td><td>" + billett.film +
+            "</td><td>" + billett.fornavn +
+            "</td>" +
+            "<td>" + billett.etternavn + "</td><td>" + billett.nummer + "</td><td>" + billett.epost + "</td>" +
+            "</tr>";
     }
     ut += "</table>";
     //Skriver ut løkken til billettlisten
     $("#billettListe").html(ut);
 }
+
+
+
 //Kaller get-kallet for sletting av alle billetter
 function slettAlle(){
     $.get("/slettAlle",function (){
